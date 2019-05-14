@@ -1,0 +1,8 @@
+{% extends "auth.base.html" %}
+
+{% block title %}Main{% endblock %}
+
+{% block container %}
+{{ user }}
+<a href="{% url 'auth_logout' %}">Logout</a>
+{% endblock %}
