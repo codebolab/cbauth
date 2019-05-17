@@ -3,14 +3,14 @@ from setuptools import setup, find_packages
 
 packages = find_packages()
 install_requires = [
-    'rest_framework',
-    'rest_framework_simplejwt',
+    'djangorestframework',
+    'djangorestframework_simplejwt',
     'allauth',
 ]
 
 
 setup(name='cbauth',
-      version='1.0',
+      version='1.0.1',
       description='Django simplified version of authorization with template views and RESTFul API',
       long_description='',
       classifiers=[

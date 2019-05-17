@@ -4,11 +4,10 @@ from django.conf import settings
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
 
+from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import permissions, status
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -27,7 +26,7 @@ class AuthMixin(object):
         return Response(response, status=405)
 
 
-class APIMeView(APIView):
+class APIMeView(generics.GenericAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request):
@@ -46,7 +45,7 @@ class APIMeView(APIView):
             return Response({'message': 'no user'}, status=403)
 
 
-class APILoginView(AuthMixin, APIView):
+class APILoginView(AuthMixin, generics.GenericAPIView):
     """
     Async Login API endpoint
     """
@@ -78,7 +77,7 @@ class APILoginView(AuthMixin, APIView):
             return Response(response, status=400)
 
 
-class APILogoutView(AuthMixin, APIView):
+class APILogoutView(AuthMixin, generics.GenericAPIView):
     """
     Async Logout API endpoint
     """
