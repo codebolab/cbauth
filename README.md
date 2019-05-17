@@ -50,3 +50,13 @@ urlpatterns = [
     path('api/auth/', include('cbauth.urls.api'), name="cbauth_api"),
 ]
 ```
+
+
+Publish
+=================================
+
+```
+python setup.py sdist
+pip install twine
+twine upload dist/*
+```
