@@ -5,7 +5,7 @@ packages = find_packages()
 install_requires = [
     'djangorestframework',
     'djangorestframework_simplejwt',
-    'allauth',
+    'django-allauth',
 ]
 
 
