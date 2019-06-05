@@ -10,7 +10,7 @@ install_requires = [
 
 
 setup(name='cbauth',
-      version='1.0.2',
+      version='1.0.4',
       description='Django simplified version of authorization with template views and RESTFul API',
       long_description='',
       classifiers=[
