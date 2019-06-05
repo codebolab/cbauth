@@ -127,6 +127,14 @@ class APIPasswordResetView(generics.GenericAPIView, FormMixin):
     def get_initial(self):
         return {}
 
+    def get_form_kwargs(self):
+        kwargs = FormMixin.get_form_kwargs(self)
+
+        if self.request.method in ('POST', 'PUT'):
+            kwargs['data'] = self.request.data
+
+        return kwargs
+
     def post(self, request, *args, **kwargs):
         form = self.get_form()
         if form.is_valid():
