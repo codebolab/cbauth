@@ -24,6 +24,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.decorators.debug import sensitive_post_parameters
 
+from .serializers import UserSerializer
 
 logger = logging.getLogger('simple')
 
@@ -65,6 +66,7 @@ class APILoginView(AuthMixin, generics.GenericAPIView):
     """
 
     permission_classes = (permissions.AllowAny,)
+    serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
         form = AuthenticationForm(request, data=request.data)
