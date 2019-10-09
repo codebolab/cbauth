@@ -41,6 +41,7 @@ class AuthMixin(object):
 
 class APIMeView(generics.GenericAPIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
+    serializer_class = UserSerializer
 
     def get(self, request):
         """
@@ -99,6 +100,7 @@ class APILogoutView(AuthMixin, generics.GenericAPIView):
     """
 
     permission_classes = (permissions.AllowAny,)
+    serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
         header = request.META.get('HTTP_AUTHORIZATION')
@@ -119,6 +121,7 @@ class APILogoutView(AuthMixin, generics.GenericAPIView):
 
 class APIPasswordResetView(generics.GenericAPIView, FormMixin):
     permission_classes = (permissions.AllowAny,)
+    serializer_class = UserSerializer
     from_email = None
     form_class = PasswordResetForm
     token_generator = default_token_generator
@@ -172,6 +175,7 @@ class APIPasswordResetView(generics.GenericAPIView, FormMixin):
 class APIPasswordResetConfirmView(generics.GenericAPIView,
                                   PasswordResetConfirmView):
     permission_classes = (permissions.AllowAny,)
+    serializer_class = UserSerializer
 
     def get_initial(self):
         return {}
